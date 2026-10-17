@@ -23,7 +23,9 @@ export default function Services({ onNavigate }: ServicesProps) {
     if (onNavigate) {
       onNavigate(tab);
     } else {
-      window.location.hash = `#${tab}`;
+      const newPath = tab === "home" ? "/" : `/${tab}`;
+      window.history.pushState(null, "", newPath);
+      window.dispatchEvent(new PopStateEvent("popstate"));
     }
   };
 

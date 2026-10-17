@@ -19,27 +19,31 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const encode = (data: Record<string, string>) => {
-      return Object.keys(data)
-        .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-    };
-
     try {
+      const payload: Record<string, string> = {
+        "form-name": "contact",
+        name: formState.name,
+        email: formState.email,
+        phone: formState.phone,
+        subject: formState.subject,
+        message: formState.message,
+      };
+
+      if (formState["bot-field"]) {
+        payload["bot-field"] = formState["bot-field"];
+      }
+
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
-          ...formState,
-        }),
+        body: new URLSearchParams(payload).toString(),
       });
 
       setSubmitSuccess(true);
       setFormState({ name: "", email: "", phone: "", subject: "", message: "", "bot-field": "" });
       setTimeout(() => setSubmitSuccess(false), 7000);
-    } catch {
-      // Graceful local handling
+    } catch (err) {
+      console.warn("Form submission fallback:", err);
       setSubmitSuccess(true);
       setFormState({ name: "", email: "", phone: "", subject: "", message: "", "bot-field": "" });
       setTimeout(() => setSubmitSuccess(false), 7000);

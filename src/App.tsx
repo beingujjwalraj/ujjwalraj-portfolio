@@ -8,25 +8,43 @@ import Services from "./sections/Services/Services";
 import Projects from "./sections/Projects/Projects";
 import Contact from "./sections/Contact/Contact";
 
+const validTabs: NavTab[] = ["about", "resume", "projects", "services", "contact"];
+
+function getTabFromLocation(): NavTab {
+  // Check clean pathname first (e.g., /about, /resume)
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
+  if (validTabs.includes(path as NavTab)) {
+    return path as NavTab;
+  }
+  // Check hash for backward compatibility (e.g., #about)
+  const hash = window.location.hash.replace("#", "").toLowerCase();
+  if (validTabs.includes(hash as NavTab)) {
+    return hash as NavTab;
+  }
+  return "home";
+}
+
 export default function App() {
-  const getTabFromHash = (): NavTab => {
-    const hash = window.location.hash.replace("#", "").toLowerCase();
-    if (["about", "resume", "projects", "services", "contact"].includes(hash)) {
-      return hash as NavTab;
-    }
-    return "home";
-  };
+  const [activeTab, setActiveTab] = useState<NavTab>(getTabFromLocation);
 
-  const [activeTab, setActiveTab] = useState<NavTab>(getTabFromHash);
-
-  // Sync state when browser back/forward buttons or hash change
+  // Clean up legacy hash in URL if opened from an old bookmark or external link
   useEffect(() => {
-    const handleHashChange = () => {
-      setActiveTab(getTabFromHash());
+    const hash = window.location.hash.replace("#", "").toLowerCase();
+    if (validTabs.includes(hash as NavTab)) {
+      window.history.replaceState(null, "", `/${hash}`);
+    } else if (hash === "home") {
+      window.history.replaceState(null, "", "/");
+    }
+  }, []);
+
+  // Sync state when browser Back / Forward buttons are clicked
+  useEffect(() => {
+    const handlePopState = () => {
+      setActiveTab(getTabFromLocation());
     };
 
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
   // Ensure scroll position is reset to top on tab switch
@@ -36,7 +54,10 @@ export default function App() {
 
   const handleSelectTab = (tab: NavTab) => {
     setActiveTab(tab);
-    window.location.hash = `#${tab}`;
+    const newPath = tab === "home" ? "/" : `/${tab}`;
+    if (window.location.pathname !== newPath) {
+      window.history.pushState(null, "", newPath);
+    }
     window.scrollTo(0, 0);
   };
 

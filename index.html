@@ -23,23 +23,29 @@
     <meta name="author" content="Ujjwal Raj" />
     <meta name="theme-color" content="#0a0a0f" />
 
-    <!-- Open Graph / Facebook / LinkedIn -->
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://beingujjwalraj.netlify.app/" />
     <meta property="og:title" content="Ujjwal Raj | Quantitative Developer & AI Full-Stack Engineer" />
     <meta
       property="og:description"
-      content="Building production-grade statistical arbitrage microservices, FIX protocol market data pipelines, and AI-powered web applications."
+      content="Quantitative Developer at GemsCap Global building statistical arbitrage systems, commodity analytics, FIX protocol pipelines, and production AI applications."
     />
-    <meta property="og:image" content="/assets/images/profile.png" />
+    <meta property="og:image" content="https://beingujjwalraj.netlify.app/assets/images/about-portrait.png" />
+    <meta property="og:image:secure_url" content="https://beingujjwalraj.netlify.app/assets/images/about-portrait.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1216" />
+    <meta property="og:image:height" content="1294" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://beingujjwalraj.netlify.app/" />
     <meta property="twitter:title" content="Ujjwal Raj | Quantitative Developer & AI Full-Stack Engineer" />
     <meta
       property="twitter:description"
-      content="Building production-grade statistical arbitrage microservices, FIX protocol market data pipelines, and AI-powered web applications."
+      content="Quantitative Developer at GemsCap Global building statistical arbitrage systems, commodity analytics, FIX protocol pipelines, and production AI applications."
     />
-    <meta property="twitter:image" content="/assets/images/profile.png" />
+    <meta property="twitter:image" content="https://beingujjwalraj.netlify.app/assets/images/about-portrait.png" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,13 +57,14 @@
   </head>
   <body>
     <!-- Netlify form detection placeholder -->
-    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
       <input type="text" name="subject" />
       <textarea name="message"></textarea>
-      <input name="bot-field" />
+      <input type="text" name="bot-field" />
     </form>
 
     <div id="root"></div>

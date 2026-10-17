@@ -317,84 +317,152 @@
 
 @media (max-width: 992px) {
   .headerHero {
-    padding: 60px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 16px 36px;
+    min-height: 100vh;
+    text-align: center;
   }
 
   .heroLeftImageContainer {
     position: relative;
-    left: 0;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
     width: 100%;
-    max-width: 380px;
-    height: 380px;
-    margin: 0 auto 30px;
+    max-width: 260px;
+    height: auto;
+    margin: 0 auto 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    z-index: 1;
   }
 
   .heroLeftImage {
-    height: 100%;
+    width: 100%;
+    height: auto;
+    max-height: 290px;
+    object-fit: contain;
     object-position: center bottom;
+    display: block;
     mask-image: none;
     -webkit-mask-image: none;
+    border-radius: 20px;
   }
 
   .headerHero .headerContainer {
     justify-content: center;
     min-height: auto;
     text-align: center;
-    padding-right: 0;
+    padding: 0;
+    width: 100%;
   }
 
   .introBlock {
     width: 100%;
+    max-width: 520px;
     align-items: center;
     padding: 0;
+    text-align: center;
+  }
+
+  .headerHero .nameHeading {
+    font-size: 42px;
   }
 
   .headerHero .roleHeading {
-    font-size: 21px;
+    font-size: 20px;
+    margin-top: 12px;
+  }
+
+  .headerHero .navbar {
+    margin-top: 24px;
+    width: 100%;
   }
 
   .headerHero .navbar ul {
     justify-content: center;
+    gap: 14px 20px;
   }
 
   .socialLinks {
+    margin-top: 24px;
     justify-content: center;
+    gap: 14px;
   }
 }
 
 @media (max-width: 768px) {
+  .headerTop .headerContainer {
+    padding: 0 18px;
+  }
+
+  .topNameHeading {
+    font-size: 24px;
+  }
+
   .mobileToggle {
     display: flex;
   }
 
-  .headerTop .navbar {
+  .headerTop .topNavbar {
     position: fixed;
-    top: 75px;
+    top: 70px;
     left: 0;
     right: 0;
     background: rgba(10, 10, 15, 0.98);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 20px 0;
+    padding: 24px 0;
     display: none;
   }
 
-  .headerTop .navbar.navbarMobile {
+  .headerTop .topNavbar.navbarMobile {
     display: block;
   }
 
-  .headerTop .navbar ul {
+  .headerTop .topNavbar ul {
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
     align-items: center;
   }
 
   .headerHero .nameHeading {
-    font-size: 38px;
+    font-size: 34px;
   }
 
   .headerHero .roleHeading {
-    font-size: 18px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerHero {
+    padding: 36px 12px 28px;
+  }
+
+  .heroLeftImageContainer {
+    max-width: 220px;
+    margin-bottom: 16px;
+  }
+
+  .headerHero .nameHeading {
+    font-size: 28px;
+  }
+
+  .headerHero .roleHeading {
+    font-size: 15px;
+  }
+
+  .headerHero .navLink {
+    font-size: 14px;
   }
 }

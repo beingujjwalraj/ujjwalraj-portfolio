@@ -47,7 +47,7 @@ export default function Header({ activeTab, onSelectTab }: HeaderProps) {
           /* SUB-PAGE SLIM TOP NAVBAR: Big Brand Name on Left, Nav Links on Right */
           <>
             <h1 className={styles.topNameHeading}>
-              <a href="#home" onClick={(e) => handleNavClick("home", e)}>
+              <a href="/" onClick={(e) => handleNavClick("home", e)}>
                 {profile.name}
               </a>
             </h1>
@@ -57,7 +57,7 @@ export default function Header({ activeTab, onSelectTab }: HeaderProps) {
                 {navItems.map((item) => (
                   <li key={item.id}>
                     <a
-                      href={`#${item.id}`}
+                      href={item.id === "home" ? "/" : `/${item.id}`}
                       className={`${styles.navLink} ${activeTab === item.id ? styles.active : ""}`}
                       onClick={(e) => handleNavClick(item.id, e)}
                     >
@@ -72,7 +72,7 @@ export default function Header({ activeTab, onSelectTab }: HeaderProps) {
           /* HOME HERO MODE: Right-aligned Content Block with Socials */
           <div className={styles.introBlock}>
             <h1 className={styles.nameHeading}>
-              <a href="#home" onClick={(e) => handleNavClick("home", e)}>
+              <a href="/" onClick={(e) => handleNavClick("home", e)}>
                 {profile.name}
               </a>
             </h1>
@@ -86,7 +86,7 @@ export default function Header({ activeTab, onSelectTab }: HeaderProps) {
                 {navItems.map((item) => (
                   <li key={item.id}>
                     <a
-                      href={`#${item.id}`}
+                      href={item.id === "home" ? "/" : `/${item.id}`}
                       className={`${styles.navLink} ${activeTab === item.id ? styles.active : ""}`}
                       onClick={(e) => handleNavClick(item.id, e)}
                     >
@@ -172,16 +172,18 @@ export default function Header({ activeTab, onSelectTab }: HeaderProps) {
           </div>
         )}
 
-        {/* Mobile Hamburger Button */}
-        <button
-          className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.toggleActive : ""}`}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle navigation"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        {/* Mobile Hamburger Button (Only on Sub-pages Slim Header) */}
+        {isTop && (
+          <button
+            className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.toggleActive : ""}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        )}
       </div>
     </header>
   );
