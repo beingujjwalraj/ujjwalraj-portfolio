@@ -205,3 +205,27 @@ input, textarea {
     padding: 0 18px;
   }
 }
+
+/* ==============================================================
+   Hide Netlify Drawer / Feedback / "Powered by Netlify" HUD Badge
+   ============================================================== */
+#netlify-hud,
+.netlify-hud,
+[data-netlify-hud],
+div[class*="netlify-hud"],
+div[id*="netlify-hud"],
+iframe[src*="netlify.com"],
+iframe[id*="netlify"],
+div:has(> iframe[src*="netlify"]) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  bottom: -9999px !important;
+  z-index: -99999 !important;
+}
+

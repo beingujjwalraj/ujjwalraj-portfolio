@@ -40,7 +40,7 @@ export default function Resume() {
         {/* 2-Column Symmetrical Layout */}
         <div className={styles.resumeGrid}>
           {/* ==============================================================
-              LEFT COLUMN: Summary, Education, Volunteering, Certifications
+              LEFT COLUMN: 1. Summary, 2. Professional Experience
              ============================================================== */}
           <div className={styles.col}>
             {/* 1. Summary */}
@@ -70,7 +70,46 @@ export default function Resume() {
               </div>
             </div>
 
-            {/* 2. Education */}
+            {/* 2. Professional Experience (Directly Below Summary) */}
+            <h3 className={styles.groupHeading}>Professional Experience</h3>
+            {resumeData.experience.map((exp, idx) => (
+              <div key={idx} className={styles.timelineItem}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.cardContent}>
+                  <div className={styles.itemHeader}>
+                    <h4 className={styles.itemTitle}>{exp.title}</h4>
+                    <span className={styles.periodBadge}>{exp.period}</span>
+                  </div>
+                  <div className={styles.companyMeta}>
+                    <span className={styles.companyBadge}>
+                      <span className={styles.companyIcon}>{exp.companyLogo || "🏢"}</span>
+                      <span className={styles.orgName}>{exp.organization}</span>
+                    </span>
+                    {exp.location && (
+                      <span className={styles.locationPill}>
+                        <span className={styles.locPin}>📍</span>
+                        <span>{exp.location}</span>
+                      </span>
+                    )}
+                  </div>
+                  <ul className={styles.bulletList}>
+                    {exp.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx}>
+                        <span className={styles.bulletIcon}>›</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ==============================================================
+              RIGHT COLUMN: Education, Honors & Awards, Certifications, Volunteering
+             ============================================================== */}
+          <div className={styles.col}>
+            {/* 1. Education */}
             <h3 className={styles.groupHeading}>Education</h3>
             {resumeData.education.map((edu, idx) => (
               <div key={idx} className={styles.timelineItem}>
@@ -107,35 +146,29 @@ export default function Resume() {
               </div>
             ))}
 
-            {/* 3. Volunteering & Leadership */}
-            <h3 className={styles.groupHeading}>Volunteering & Leadership</h3>
-            {resumeData.volunteering.map((vol, idx) => (
+            {/* 2. Achievements & Honors */}
+            <h3 className={styles.groupHeading}>Achievements & Honors</h3>
+            {resumeData.achievements.map((ach, idx) => (
               <div key={idx} className={styles.timelineItem}>
                 <div className={styles.timelineDot}></div>
                 <div className={styles.cardContent}>
                   <div className={styles.itemHeader}>
-                    <h4 className={styles.itemTitle}>{vol.title}</h4>
-                    <span className={styles.periodBadge}>{vol.period}</span>
+                    <h4 className={styles.itemTitle}>{ach.title}</h4>
+                    <span className={styles.periodBadge}>{ach.period}</span>
                   </div>
                   <div className={styles.companyMeta}>
                     <span className={styles.companyBadge}>
-                      <span className={styles.companyIcon}>🤝</span>
-                      <span className={styles.orgName}>{vol.organization}</span>
+                      <span className={styles.companyIcon}>🏆</span>
+                      <span className={styles.orgName}>{ach.organization}</span>
                     </span>
-                    {vol.location && (
-                      <span className={styles.locationPill}>
-                        <span className={styles.locPin}>📍</span>
-                        <span>{vol.location}</span>
-                      </span>
-                    )}
-                    {vol.badge && <span className={styles.accentBadge}>{vol.badge}</span>}
+                    {ach.badge && <span className={styles.accentBadge}>{ach.badge}</span>}
                   </div>
-                  <p className={styles.itemBio}>{vol.description}</p>
+                  <p className={styles.itemBio}>{ach.description}</p>
                 </div>
               </div>
             ))}
 
-            {/* 4. Licenses & Certifications */}
+            {/* 3. Licenses & Certifications */}
             <h3 className={styles.groupHeading}>Licenses & Certifications</h3>
             <div className={styles.certGrid}>
               {resumeData.certifications.map((cert, cIdx) => (
@@ -162,64 +195,31 @@ export default function Resume() {
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* ==============================================================
-              RIGHT COLUMN: Professional Experience (TOP), Achievements & Honors
-             ============================================================== */}
-          <div className={styles.col}>
-            {/* 1. Professional Experience (TOP of Right Column) */}
-            <h3 className={styles.groupHeading}>Professional Experience</h3>
-            {resumeData.experience.map((exp, idx) => (
+            {/* 4. Volunteering & Leadership */}
+            <h3 className={styles.groupHeading}>Volunteering & Leadership</h3>
+            {resumeData.volunteering.map((vol, idx) => (
               <div key={idx} className={styles.timelineItem}>
                 <div className={styles.timelineDot}></div>
                 <div className={styles.cardContent}>
                   <div className={styles.itemHeader}>
-                    <h4 className={styles.itemTitle}>{exp.title}</h4>
-                    <span className={styles.periodBadge}>{exp.period}</span>
+                    <h4 className={styles.itemTitle}>{vol.title}</h4>
+                    <span className={styles.periodBadge}>{vol.period}</span>
                   </div>
                   <div className={styles.companyMeta}>
                     <span className={styles.companyBadge}>
-                      <span className={styles.companyIcon}>{exp.companyLogo || "🏢"}</span>
-                      <span className={styles.orgName}>{exp.organization}</span>
+                      <span className={styles.companyIcon}>🤝</span>
+                      <span className={styles.orgName}>{vol.organization}</span>
                     </span>
-                    {exp.location && (
+                    {vol.location && (
                       <span className={styles.locationPill}>
                         <span className={styles.locPin}>📍</span>
-                        <span>{exp.location}</span>
+                        <span>{vol.location}</span>
                       </span>
                     )}
+                    {vol.badge && <span className={styles.accentBadge}>{vol.badge}</span>}
                   </div>
-                  <ul className={styles.bulletList}>
-                    {exp.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx}>
-                        <span className={styles.bulletIcon}>›</span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-
-            {/* 2. Achievements & Honors */}
-            <h3 className={styles.groupHeading}>Achievements & Honors</h3>
-            {resumeData.achievements.map((ach, idx) => (
-              <div key={idx} className={styles.timelineItem}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.cardContent}>
-                  <div className={styles.itemHeader}>
-                    <h4 className={styles.itemTitle}>{ach.title}</h4>
-                    <span className={styles.periodBadge}>{ach.period}</span>
-                  </div>
-                  <div className={styles.companyMeta}>
-                    <span className={styles.companyBadge}>
-                      <span className={styles.companyIcon}>🏆</span>
-                      <span className={styles.orgName}>{ach.organization}</span>
-                    </span>
-                    {ach.badge && <span className={styles.accentBadge}>{ach.badge}</span>}
-                  </div>
-                  <p className={styles.itemBio}>{ach.description}</p>
+                  <p className={styles.itemBio}>{vol.description}</p>
                 </div>
               </div>
             ))}

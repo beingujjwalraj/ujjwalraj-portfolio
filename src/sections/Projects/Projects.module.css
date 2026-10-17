@@ -285,12 +285,47 @@
     gap: 20px;
   }
 
+  .filterWrapper {
+    width: 100%;
+    margin: 16px 0 28px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filterList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    max-width: 440px;
+    gap: 8px;
+  }
+
+  .filterBtn {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.25;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 380px) {
   .filterList {
     gap: 6px;
   }
 
   .filterBtn {
-    padding: 6px 14px;
-    font-size: 12px;
+    font-size: 10.5px;
+    padding: 6px 4px;
+    min-height: 40px;
+    letter-spacing: 0.2px;
   }
 }
+

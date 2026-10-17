@@ -1,8 +1,9 @@
 .resumeSection {
-  padding: 24px 0 80px;
+  padding: 32px 0 90px;
   animation: fadeIn 0.4s ease-out;
   position: relative;
   z-index: 1;
+  scroll-margin-top: 90px;
 }
 
 @keyframes fadeIn {
@@ -433,25 +434,97 @@
 @media (max-width: 992px) {
   .resumeGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
 
   .headerRow {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .downloadBtn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
+  .resumeSection {
+    padding: 20px 0 80px;
+  }
+
   .resumeContainer {
-    padding: 0 16px;
+    padding: 0 14px;
+  }
+
+  .timelineItem {
+    padding: 0 0 20px 16px;
+  }
+
+  .timelineDot {
+    width: 12px;
+    height: 12px;
+    left: -7px;
+    top: 5px;
   }
 
   .cardContent {
-    padding: 18px 18px;
+    padding: 16px 14px;
+    border-radius: 10px;
+    word-break: break-word;
+    overflow: hidden;
   }
 
   .itemTitle {
     font-size: 17px;
+    word-break: break-word;
+  }
+
+  .groupHeading {
+    font-size: 20px;
+    margin: 26px 0 16px;
+  }
+
+  .metaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .contactChips {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .contactChip {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 12px;
+    word-break: break-all;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+  }
+
+  .bulletList li {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    word-break: break-word;
+  }
+
+  .certGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .certCard {
+    padding: 14px 14px;
+    word-break: break-word;
   }
 }
