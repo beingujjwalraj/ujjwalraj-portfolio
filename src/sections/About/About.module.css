@@ -458,6 +458,12 @@
     box-sizing: border-box;
   }
 
+  .sectionTitle {
+    font-size: clamp(19px, 5.8vw, 22.5px);
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+  }
+
   .roleTitle {
     font-size: 21px;
   }
@@ -492,4 +498,13 @@
     font-size: 0.88rem;
   }
 }
+
+@media (max-width: 380px) {
+  .sectionTitle {
+    font-size: 18.5px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+}
+
 

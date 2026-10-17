@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { MouseEvent } from "react";
 import styles from "./Header.module.css";
 import { profile } from "../../data/profile";
@@ -22,6 +22,17 @@ const navItems: { id: NavTab; label: string }[] = [
 export default function Header({ activeTab, onSelectTab }: HeaderProps) {
   const isTop = activeTab !== "home";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileTabBarRef = useRef<HTMLDivElement>(null);
+
+  // Smoothly center the active tab in the mobile pill strip whenever activeTab changes
+  useEffect(() => {
+    if (mobileTabBarRef.current) {
+      const activeBtn = mobileTabBarRef.current.querySelector<HTMLElement>(`[data-tab="${activeTab}"]`);
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }
+  }, [activeTab]);
 
   const handleNavClick = (tab: NavTab, e: MouseEvent) => {
     e.preventDefault();
@@ -185,6 +196,25 @@ export default function Header({ activeTab, onSelectTab }: HeaderProps) {
           </button>
         )}
       </div>
+
+      {/* Mobile Horizontal Page Strip (Visible on mobile sub-pages) */}
+      {isTop && (
+        <div className={styles.mobileTabBarWrapper}>
+          <div className={styles.mobileTabBar} ref={mobileTabBarRef}>
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                data-tab={item.id}
+                className={`${styles.mobileTabItem} ${activeTab === item.id ? styles.mobileTabItemActive : ""}`}
+                onClick={(e) => handleNavClick(item.id, e as unknown as MouseEvent)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

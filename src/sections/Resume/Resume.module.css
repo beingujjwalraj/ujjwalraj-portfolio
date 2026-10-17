@@ -500,6 +500,12 @@
     box-sizing: border-box;
   }
 
+  .sectionTitle {
+    font-size: clamp(20px, 6.2vw, 24px);
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+  }
+
   .timelineItem {
     padding: 0 0 20px 14px;
     width: 100%;
@@ -616,4 +622,13 @@
     box-sizing: border-box;
   }
 }
+
+@media (max-width: 380px) {
+  .sectionTitle {
+    font-size: 19.5px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+}
+
 
