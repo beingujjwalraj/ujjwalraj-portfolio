@@ -1,0 +1,55 @@
+/* Main Application Layout Styles */
+.appContainer {
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.mainContent {
+  padding-top: 82px;
+  min-height: calc(100vh - 82px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Background Silhouette Watermark on Sub-pages */
+.bgWatermark {
+  position: fixed;
+  right: -50px;
+  bottom: 0;
+  height: 88vh;
+  max-height: 800px;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  opacity: 0.08;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.watermarkImg {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+@media (max-width: 992px) {
+  .bgWatermark {
+    opacity: 0.08;
+    height: 65vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding-top: 75px;
+  }
+
+  .bgWatermark {
+    display: none;
+  }
+}

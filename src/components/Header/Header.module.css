@@ -1,0 +1,400 @@
+/* Header Master Styles */
+.header {
+  transition: all 0.4s ease-in-out;
+  position: relative;
+  z-index: 997;
+}
+
+/* --------------------------------------------------------------
+   HERO / HOME MODE (Center / Full Viewport)
+   Left Side: Image | Right Side: Text & Navigation (moved more right)
+   -------------------------------------------------------------- */
+.headerHero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #040404;
+}
+
+/* Left Illustration pinned to left half and bottom */
+.heroLeftImageContainer {
+  position: absolute;
+  left: 2%;
+  bottom: 0;
+  top: 0;
+  width: 48%;
+  max-width: 680px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroLeftImage {
+  height: 90vh;
+  max-height: 840px;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
+}
+
+/* Right Side Content Container (Moved slightly more to the right) */
+.headerHero .headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 1360px;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+  padding-right: 40px;
+}
+
+.introBlock {
+  width: 50%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0 40px 30px;
+}
+
+.headerHero .nameHeading {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  font-family: var(--font-title);
+  letter-spacing: -0.5px;
+}
+
+.headerHero .nameHeading a {
+  color: #ffffff;
+  transition: color var(--transition-fast);
+}
+
+.headerHero .nameHeading a:hover {
+  color: var(--accent-primary);
+}
+
+.headerHero .roleHeading {
+  font-size: 24px;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+  font-family: var(--font-heading);
+  line-height: 1.4;
+}
+
+.headerHero .accentSpan {
+  color: #ffffff;
+  border-bottom: 2px solid var(--accent-primary);
+  padding-bottom: 4px;
+  font-weight: 600;
+}
+
+/* Hero Navbar */
+.headerHero .navbar {
+  margin-top: 35px;
+}
+
+.headerHero .navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.headerHero .navLink {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-title);
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+
+.headerHero .navLink::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-primary);
+  transition: width 0.3s ease;
+}
+
+.headerHero .navLink:hover,
+.headerHero .navLink.active {
+  color: #ffffff;
+}
+
+.headerHero .navLink:hover::before,
+.headerHero .navLink.active::before {
+  width: 100%;
+}
+
+/* Social links in hero */
+.socialLinks {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.socialLinks a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.socialLinks a:hover {
+  background: var(--accent-primary);
+  color: #040404;
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(24, 210, 110, 0.3);
+}
+
+/* --------------------------------------------------------------
+   HEADER TOP MODE (Fixed Slim Top Navbar on sub-pages)
+   -------------------------------------------------------------- */
+.headerTop {
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(4, 4, 4, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.headerTop .headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.topNameHeading {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  font-family: var(--font-title);
+  letter-spacing: -0.5px;
+}
+
+.topNameHeading a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.topNameHeading a:hover {
+  color: var(--accent-primary);
+}
+
+.topNavbar ul {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topNavbar .navLink {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-title);
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+
+.topNavbar .navLink::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-primary);
+  transition: width 0.3s ease;
+}
+
+.topNavbar .navLink:hover,
+.topNavbar .navLink.active {
+  color: #ffffff;
+}
+
+.topNavbar .navLink:hover::before,
+.topNavbar .navLink.active::before {
+  width: 100%;
+}
+
+.headerTop .navLink:hover,
+.headerTop .navLink.active {
+  color: #ffffff;
+}
+
+.headerTop .navLink:hover::before,
+.headerTop .navLink.active::before {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------
+   Mobile Navigation Toggle & Mobile Menu
+   -------------------------------------------------------------- */
+.mobileToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mobileToggle span {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.toggleActive span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.toggleActive span:nth-child(2) {
+  opacity: 0;
+}
+
+.toggleActive span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .heroLeftImage {
+    height: 80vh;
+  }
+  .headerHero .headerContainer {
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .headerHero {
+    padding: 60px 0;
+  }
+
+  .heroLeftImageContainer {
+    position: relative;
+    left: 0;
+    width: 100%;
+    max-width: 380px;
+    height: 380px;
+    margin: 0 auto 30px;
+    justify-content: center;
+  }
+
+  .heroLeftImage {
+    height: 100%;
+    object-position: center bottom;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .headerHero .headerContainer {
+    justify-content: center;
+    min-height: auto;
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .introBlock {
+    width: 100%;
+    align-items: center;
+    padding: 0;
+  }
+
+  .headerHero .roleHeading {
+    font-size: 21px;
+  }
+
+  .headerHero .navbar ul {
+    justify-content: center;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileToggle {
+    display: flex;
+  }
+
+  .headerTop .navbar {
+    position: fixed;
+    top: 75px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    display: none;
+  }
+
+  .headerTop .navbar.navbarMobile {
+    display: block;
+  }
+
+  .headerTop .navbar ul {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .headerHero .nameHeading {
+    font-size: 38px;
+  }
+
+  .headerHero .roleHeading {
+    font-size: 18px;
+  }
+}

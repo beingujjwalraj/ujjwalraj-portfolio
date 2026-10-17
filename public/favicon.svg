@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0a0d14"/>
+      <stop offset="100%" stop-color="#121824"/>
+    </linearGradient>
+    <linearGradient id="uGrad" x1="18" y1="16" x2="46" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2af589"/>
+      <stop offset="50%" stop-color="#18d26e"/>
+      <stop offset="100%" stop-color="#00e5a3"/>
+    </linearGradient>
+    <filter id="glow" x="12" y="10" width="40" height="44" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- High-contrast Dark Squircle Container -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)"/>
+  <rect width="61" height="61" x="1.5" y="1.5" rx="14.5" stroke="#18d26e" stroke-opacity="0.3" stroke-width="1.5"/>
+
+  <!-- Soft Ambient Glow behind U -->
+  <path d="M20 18 V34 C20 41.5 25.5 47 32 47 C38.5 47 44 41.5 44 34 V18"
+        stroke="#18d26e" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+        opacity="0.3" filter="url(#glow)"/>
+
+  <!-- Geometric Sculpted "U" Monogram for Ujjwal Raj -->
+  <path d="M20 18 V34 C20 41 25.5 46.5 32 46.5 C38.5 46.5 44 41 44 34 V18"
+        stroke="url(#uGrad)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Quant Terminal Dot Accent on Right Stem -->
+  <circle cx="44" cy="18" r="3.75" fill="#2af589"/>
+</svg>

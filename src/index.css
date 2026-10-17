@@ -1,0 +1,207 @@
+/* ==============================================================
+   Portfolio Design System & Global Styles
+   Inspired by Dheeraj Singh Portfolio & Modern Editorial Aesthetics
+   ============================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors */
+  --bg-primary: #040404;
+  --bg-secondary: #0d0d12;
+  --bg-card: rgba(22, 22, 30, 0.7);
+  --bg-card-hover: rgba(30, 30, 42, 0.9);
+  --bg-overlay: rgba(4, 4, 4, 0.92);
+  
+  --accent-primary: #18d26e;
+  --accent-primary-rgb: 24, 210, 110;
+  --accent-hover: #35e888;
+  --accent-cyan: #00d4aa;
+  
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-light: rgba(255, 255, 255, 0.06);
+  
+  /* Typography */
+  --font-heading: 'Raleway', sans-serif;
+  --font-title: 'Poppins', sans-serif;
+  --font-body: 'Open Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Layout */
+  --container-max: 1140px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle background overlay effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 85% 15%, rgba(24, 210, 110, 0.05) 0%, transparent 45%),
+              radial-gradient(circle at 15% 85%, rgba(0, 212, 170, 0.04) 0%, transparent 50%),
+              #040404;
+  z-index: -1;
+  pointer-events: none;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  background: none;
+}
+
+input, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+::selection {
+  background: rgba(24, 210, 110, 0.35);
+  color: #fff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #040404;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222228;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section Title (Matching Dheeraj's site) */
+.section-title {
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0;
+  line-height: 1;
+  margin: 0 0 16px 0;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-title);
+}
+
+.section-title p {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: var(--font-title);
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Green Action Button */
+.btn-download-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 10px 24px;
+  border: 1.5px solid var(--accent-primary);
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(24, 210, 110, 0.08);
+  transition: all var(--transition-fast);
+}
+
+.btn-download-resume:hover {
+  background: var(--accent-primary);
+  color: #040404;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(24, 210, 110, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title p {
+    font-size: 26px;
+  }
+  .container {
+    padding: 0 18px;
+  }
+}
